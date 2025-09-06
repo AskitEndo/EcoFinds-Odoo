@@ -119,4 +119,14 @@
   body {
     @apply bg-background text-foreground;
   }
+  /* Hide default browser cursor globally */
+  * {
+    cursor: none !important;
+  }
+  /* Restore text cursor for form fields */
+  input,
+  textarea,
+  select {
+    cursor: text !important;
+  }
 }
