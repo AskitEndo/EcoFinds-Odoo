@@ -168,7 +168,7 @@ Image path: `/public/ecofindslogo_nobg.png`
 
 ## 🧱 **Technical Architecture Overview**
 
-\`\`\`plaintext
+```plaintext
 Client (Next.js)
 │
 ├── Auth (Clerk)
@@ -193,4 +193,7 @@ _Crafted with 💚 by Ankit, Sneha, and Yash._
 ---
 
 Let me know if you'd like a downloadable version (e.g., `.md` file), or if you want help deploying or extending any part of this project.
+
+```
+
 ```
