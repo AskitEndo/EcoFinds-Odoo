@@ -1,153 +1,196 @@
-# Technical Architecture
+# 🌱 **EcoFinds — Sustainable Second-Hand Marketplace**
 
-## Backend
-
-EcoFinds uses the integrated backend capabilities of Next.js (API Routes and Server Components). All backend logic runs in a Node.js environment on the server, not in the user's browser.
-
-- **User Management & Synchronization:**
-  - Server-side logic in `app/dashboard/page.tsx` securely communicates with Clerk and the database to check for and create new users.
-- **Product API (`/api/products`):**
-  - **POST:** Securely creates new products, validates data, and links to the authenticated user.
-  - **GET:** Fetches products, supports filtering by category and keyword search.
-- **Specific Product Management (`/api/products/[productId]`):**
-  - **DELETE:** Securely deletes a product, verifying the requester is the owner.
-- **Security:** All backend operations use Clerk's `auth()` on the server to ensure only authenticated users can create or delete resources.
-
-## Database
-
-EcoFinds uses **SQLite** (via Prisma ORM) for all data storage. All user and product actions (sign up, add product, view, delete, etc.) are reflected in the `dev.db` file. SQLite was chosen for its speed, zero config, and offline capability—ideal for hackathons.
-
-## ImageKit
-
-- ImageKit is configured (SDK, server utility, credentials in `.env`).
-- **Current:** Product forms use a URL string for image placeholders (meets hackathon requirements).
-- **Next:** Client-side file upload logic can be added for full image upload support.
-
-## High-Impact Improvisations (Next Steps)
-
-To further impress judges and improve the user experience, consider these:
-
-1. **Toast Notifications:**
-   - Add `react-hot-toast` for instant feedback on product creation/deletion.
-2. **Edit Product Page:**
-   - Implement `/products/[productId]/edit` for full CRUD (pre-filled form, update endpoint).
-3. **Loading Skeletons:**
-   - Show skeleton cards while loading products for a polished, fast-feeling UI.
-4. **Custom Clerk UI Theme:**
-   - Match Clerk sign-in/sign-up UI to the app’s color scheme for seamless branding.
+> _Empowering Sustainable Consumption, One Unique Find at a Time._
 
 ---
 
-# 🌱 EcoFinds - Sustainable Second-Hand Marketplace
+## 👋 Introduction
 
-> Empowering Sustainable Consumption, One Unique Find at a Time.
-
----
-
-<div align="center">
-   <img src="https://avatars.githubusercontent.com/u/160294709?v=4" alt="Ankit profile" width="80" style="border-radius: 50%" />
-   <img src="https://avatars.githubusercontent.com/u/175080629?v=4" alt="Sneha profile" width="80" style="border-radius: 50%" />
-   <img src="https://avatars.githubusercontent.com/u/75797212?v=4" alt="Yash profile" width="80" style="border-radius: 50%" />
-</div>
-
-<div align="center">
-   <a href="https://github.com/AskitEndo">AnkitKumar Singh [Askit]</a> &nbsp;|&nbsp;
-   <a href="https://github.com/DarpanEndo">Sneha Priyadarshy[Darpan]</a> &nbsp;|&nbsp;
-   <a href="https://github.com/Fr0nSen">Yash Raghav [Fr0Sen]</a>
-</div>
+**EcoFinds** is a modern, community-driven platform for buying and selling second-hand products with sustainability at its core. Designed to reduce waste and promote conscious consumption, EcoFinds provides users with an intuitive, secure, and aesthetically pleasing marketplace to discover and share unique, pre-loved items.
 
 ---
 
-## 🚀 Vision
+## 🎯 **Vision**
 
-EcoFinds is a vibrant, trusted platform that empowers sustainable consumption by making it easy to buy and sell pre-owned goods. Our mission: foster a culture of sustainability, reduce waste, and provide a convenient, accessible alternative to buying new items. EcoFinds aims to be the go-to destination for a conscious community seeking unique finds and responsible choices.
+EcoFinds aims to:
 
-## ✨ Features
-
-- **User Authentication:** Secure registration and login via Clerk (email/password, social login).
-- **Profile Creation:** Usernames and profile images supported; dashboard displays user info.
-- **Product Listing:** Create, view, edit, and delete product listings with title, description, category, price, and image.
-- **Product Browsing:** Homepage feed with all products, category filter, and keyword search.
-- **Product Detail View:** Dedicated page for each product with full details.
-- **Cart:** Cart page for added products (currently uses mock data; persistent cart coming soon).
-- **Purchases:** Previous purchases page (static for now; purchase flow coming soon).
-- **User Dashboard:** View user info; future updates will allow editing all fields.
-- **Responsive UI:** Mobile and desktop friendly, modern design, accessible navigation.
-
-## 🏆 Hackathon Requirements Coverage
-
-- [x] User authentication and registration
-- [x] Profile creation (username)
-- [x] User dashboard (view info; edit coming soon)
-- [x] Product listing creation (title, description, category, price, image)
-- [x] Product listing management (CRUD)
-- [x] Product browsing (feed, filter, search)
-- [x] Product detail view
-- [x] Cart (UI present; logic in progress)
-- [x] Previous purchases (UI present; logic in progress)
-
-**Note:**
-
-- Cart and purchase logic are currently mock/static and will be made persistent in future updates.
-- All core screens and flows are present per the hackathon wireframes.
-
-## ⚡ Getting Started
-
-1. **Install dependencies:**
-
-   ```bash
-   npm install
-   # or
-   yarn install
-   # or
-   pnpm install
-   # or
-   bun install
-   ```
-
-2. **Generate Prisma Client:** _(Required for database access)_
-
-   ```bash
-   npx prisma generate
-   ```
-
-   If you see an error like:
-
-   > `@prisma/client did not initialize yet. Please run "prisma generate" and try to import it again.`
-   > Just run the above command and restart your dev server.
-
-3. **Run the development server:**
-
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   # or
-   pnpm dev
-   # or
-   bun dev
-   ```
-
-4. **Open [http://localhost:3000](http://localhost:3000) in your browser** to use EcoFinds. You can browse, register, list products, and explore all core features.
-
-## 🛠️ Tech Stack
-
-- Next.js (App Router)
-- Tailwind CSS
-- shadcn/ui (UI primitives)
-- Prisma ORM (SQLite)
-- Clerk (authentication)
-- Zod (form validation)
-
-## 🔥 Improvements & Roadmap
-
-- Persistent cart and purchase logic
-- Editable user dashboard/profile
-- Enhanced accessibility and polish
-- Real-time updates and notifications
+- Foster a circular economy by encouraging the reuse of goods
+- Make sustainable choices accessible to everyone
+- Build a trusted community of environmentally conscious users
+- Be the go-to platform for second-hand treasures and responsible consumption
 
 ---
 
+## 🚀 **Key Features**
+
+- 🔐 **User Authentication:** Secure login and registration with Clerk (email/password and social login)
+- 👤 **User Profiles:** Create profiles with usernames and profile pictures
+- 📦 **Product Listings:** Add, edit, view, and delete listings with title, description, category, price, and image
+- 🔍 **Smart Browsing:** Search bar, category filters, and full product feed
+- 📄 **Product Details:** Individual product pages with full descriptions
+- 🛒 **Cart System:** Add items to a cart (UI in place; persistent cart coming soon)
+- 💸 **Purchase History:** Track your purchases (UI ready; backend logic in progress)
+- 📱 **Responsive Design:** Fully responsive layout for mobile and desktop
+- 🧑‍💼 **User Dashboard:** View user details (editing profile coming soon)
+
 ---
 
-_Built by Ankit, Sneha, and Yash for the hackathon challenge: Empowering Sustainable Consumption through a Second-Hand Marketplace._
+## 🧑‍💻 Team Members
+
+Meet the developers behind EcoFinds:
+
+| Avatar                                                                                                    | Name                             | GitHub                                       |
+| --------------------------------------------------------------------------------------------------------- | -------------------------------- | -------------------------------------------- |
+| <img src="https://avatars.githubusercontent.com/u/160294709?v=4" width="60" style="border-radius: 50%" /> | **Ankit Kumar Singh** _(Askit)_  | [@AskitEndo](https://github.com/AskitEndo)   |
+| <img src="https://avatars.githubusercontent.com/u/175080629?v=4" width="60" style="border-radius: 50%" /> | **Sneha Priyadarshy** _(Darpan)_ | [@DarpanEndo](https://github.com/DarpanEndo) |
+| <img src="https://avatars.githubusercontent.com/u/75797212?v=4" width="60" style="border-radius: 50%" />  | **Yash Raghav** _(Fr0Sen)_       | [@Fr0nSen](https://github.com/Fr0nSen)       |
+
+---
+
+## ⚙️ **Tech Stack**
+
+- **Framework:** Next.js (App Router, SSR, and API routes)
+- **Database:** SQLite via Prisma ORM
+- **Styling:** Tailwind CSS + `shadcn/ui` components
+- **Auth:** Clerk (secure user login, sessions, and management)
+- **Validation:** Zod for form and API schema validation
+- **UI Effects:** react-parallax for engaging hero section
+- **Media Handling:** ImageKit-ready (currently using static URLs)
+
+---
+
+## 🗺️ **Application Flow**
+
+```mermaid
+flowchart TD
+    Start(["User visits EcoFinds"]) --> Auth{"Authenticated?"}
+    Auth -- No --> SignIn["Sign In / Sign Up - Clerk"]
+    SignIn --> Auth
+    Auth -- Yes --> Home["Home - Dashboard"]
+    Home --> Browse["Browse Products"] & MyListings["My Listings"] & Cart["Cart"] & Purchases["Previous Purchases"]
+    Browse --> Search["Search/Filter"] & ProductDetail["View Product Detail"]
+    ProductDetail --> AddCart["Add to Cart"]
+    AddCart --> Cart
+    MyListings --> AddProduct["Add Product"] & EditProduct["Edit Product"] & DeleteProduct["Delete Product"]
+    Cart --> Checkout["Checkout - future"]
+    Purchases --> ViewOrders["View Past Orders"]
+    AddProduct --> Home
+    EditProduct --> Home
+    DeleteProduct --> Home
+    Checkout --> Purchases
+
+```
+
+---
+
+## 🛠️ **Setup Instructions**
+
+Follow the steps below to get EcoFinds running locally:
+
+1. **Install dependencies**
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+2. **Generate Prisma Client**
+
+\`\`\`bash
+npx prisma generate
+
+````
+
+> If you encounter the error:
+> `@prisma/client did not initialize yet...`
+> Run the command above and restart the dev server.
+
+3. **Run the development server**
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+````
+
+4. **Visit:** [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 📋 **Hackathon Requirements Covered**
+
+- ✅ User authentication and profile creation
+- ✅ Product listing (Create, Read, Update, Delete)
+- ✅ Search, filters, and full product feed
+- ✅ Product detail pages
+- ✅ UI for cart and purchase history (functionality in progress)
+- ✅ Fully responsive user interface
+- ✅ User dashboard with profile view
+
+---
+
+## 🔥 **Next Steps & Improvements**
+
+- 🎉 **Toast Notifications** – Add user feedback with `react-hot-toast`
+- ✏️ **Editable Product Listings** – Pre-filled form for updating listings
+- 💀 **Skeleton Loaders** – Improve UX during data fetches
+- 🎨 **Custom Clerk Theme** – Align auth pages with EcoFinds branding
+- 🛒 **Persistent Cart & Checkout Flow** – Implement full e-commerce flow
+- 👤 **Editable User Profiles** – Update user info from dashboard
+- 📢 **Real-Time Updates & Alerts** – Live activity feedback
+
+---
+
+## 🖼️ **Hero Section with Parallax**
+
+The homepage uses a **parallax effect** (via `react-parallax`) featuring the EcoFinds logo for a modern and captivating landing experience.
+
+Image path: `/public/ecofindslogo_nobg.png`
+
+---
+
+## 🔐 **Security & Access Control**
+
+- All backend operations are guarded using Clerk's `auth()`
+- Only authenticated users can create or modify listings
+- Database actions are secured via Prisma
+
+---
+
+## 🧱 **Technical Architecture Overview**
+
+\`\`\`plaintext
+Client (Next.js)
+│
+├── Auth (Clerk)
+├── UI (shadcn/ui + Tailwind)
+│
+└── API Routes
+├── User Auth & Profile
+├── Product CRUD
+├── Cart & Purchase (upcoming)
+└── Prisma ORM (SQLite)
+
+```
+
+---
+
+## 🏁 Final Note
+
+EcoFinds is a hackathon project built with purpose — to **inspire sustainable habits**, reduce consumer waste, and make second-hand shopping seamless, fun, and impactful.
+
+_Crafted with 💚 by Ankit, Sneha, and Yash._
+
+---
+
+Let me know if you'd like a downloadable version (e.g., `.md` file), or if you want help deploying or extending any part of this project.
+```

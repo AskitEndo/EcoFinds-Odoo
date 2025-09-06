@@ -6,16 +6,19 @@ import { ShoppingCart } from "lucide-react";
 
 export default function Header() {
   return (
-    <header className="bg-gradient-to-b from-[#f8fafc] to-[#e2e8f0] shadow-md border-b border-gray-200 sticky top-0 z-50">
+    <header className="bg-gradient-to-b from-[#E6CFA9] to-[#FBF9D1] shadow-md border-b border-[#C1856D] sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <Link
-          href="/"
-          className="text-3xl font-extrabold tracking-tight text-green-700 flex items-center gap-2"
-        >
-          <span className="inline-block bg-green-100 rounded-full px-3 py-1 text-green-700 text-lg font-bold shadow-sm">
-            🌱
+        <Link href="/" className="flex items-center gap-3 group">
+          <span className="inline-block rounded-full overflow-hidden bg-[#FBF9D1] border-2 border-[#9A3F3F] shadow-md">
+            <img
+              src="/ecofindslogo_nobg.png"
+              alt="EcoFinds Logo"
+              className="h-12 w-12 object-contain transition-transform group-hover:scale-105"
+            />
           </span>
-          EcoFinds
+          <span className="text-3xl font-extrabold tracking-tight text-[#9A3F3F] drop-shadow-sm">
+            EcoFinds
+          </span>
         </Link>
         <nav className="flex items-center gap-2 sm:gap-4">
           <SignedIn>
